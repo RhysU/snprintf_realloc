@@ -1,4 +1,4 @@
-CFLAGS := -std=c99 # -Wall -Wextra -Werror
+CFLAGS := -std=c99 -Wall -Wextra # -Werror
 
 all: check
 snprintf_realloc: snprintf_realloc.c
