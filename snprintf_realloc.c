@@ -29,11 +29,12 @@ int snprintf_realloc(char **str, size_t *size, const char *format, ...);
 int
 snprintf_realloc(char **str, size_t *size, const char *format, ...)
 {
-    int retval, needed;
+    int retval;
+    size_t needed;
     va_list ap;
     va_start(ap, format);
     while (   0     <= (retval = vsnprintf(*str, *size, format, ap)) // Error?
-           && *size <  (needed = retval + 1)) {                      // Space?
+           && *size <  (needed = (size_t) retval + 1)) {             // Space?
         va_end(ap);
         *size *= 2;                                                  // Space?
         if (*size < needed) *size = needed;                          // Space!
